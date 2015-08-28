@@ -1,0 +1,17 @@
+
+- Reespaçar as colunas na Jtable1 do frame Caixa (DONE)
+
+- Adicionar a função enter na caixa de texto codigo para pesquisa mais rápida (DONE)
+
+- Tratar error (DONE)
+
+- Terminar de implementar o frame ListarProdutos (DONE)
+
+- implementar tela troco
+
+- implementar botão cancelar
+
+- implemantar atalhos F3 e F12
+
+- Mudar array [] de produtos esperados na classe operacoes por List
+
