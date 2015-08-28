@@ -15,7 +15,7 @@ public class DaoHelper {
 	public void getConnect(){
 				
 		 try {
-			connection = DriverManager.getConnection(DATABASE_URL, "root", "37121620");
+			connection = DriverManager.getConnection(DATABASE_URL, "root", "");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
