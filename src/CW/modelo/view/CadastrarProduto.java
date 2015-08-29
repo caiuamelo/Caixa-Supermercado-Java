@@ -252,7 +252,7 @@ public class CadastrarProduto extends javax.swing.JFrame implements ActionListen
                 jButton3.setEnabled(false);
                 jButton4.setEnabled(false);
 
-                if (produtoService.encontrarProdutoPorCodigo(Long.parseLong(jTextField1.getText())).getPreco()==-1){
+                if (produtoService.encontrarProdutoPorCodigo(Long.parseLong(jTextField1.getText())).getPreco()==1){
                     salvar();
                     jLabel5.setText("Item salvo com sucesso");   
                 }else{

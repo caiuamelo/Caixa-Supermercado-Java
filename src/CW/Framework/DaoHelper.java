@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 
 public class DaoHelper {
@@ -14,11 +15,12 @@ public class DaoHelper {
 	
 	public void getConnect(){
 				
-		 try {
-			connection = DriverManager.getConnection(DATABASE_URL, "root", "");
+		try {
+			connection = DriverManager.getConnection(DATABASE_URL, "root", "37121620");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+                    JOptionPane.showMessageDialog(null,"Sem conexão com o banco de dados.");    
+                    //e.printStackTrace();
 		}
 		
 	}
