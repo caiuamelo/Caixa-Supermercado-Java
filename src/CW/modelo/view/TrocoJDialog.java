@@ -28,8 +28,9 @@ public class TrocoJDialog extends javax.swing.JDialog implements ActionListener{
         jButton1.addActionListener(this);
         venda = vendasService.getUltimaVenda();
         jTextField2.addActionListener(this);
+        jTextField1.setText("0");
         jLabel2.setText(String.format("%.2f",venda.getTotal()));
-        jTextField1.requestFocus();
+        jTextField2.requestFocus();
         this.getRootPane().setDefaultButton(jButton1);
         
     }
@@ -187,16 +188,26 @@ public class TrocoJDialog extends javax.swing.JDialog implements ActionListener{
     private final Vendas venda;
     VendasService vendasService = new VendasService(); 
     //minhas variaveis
-
+    
+    // Quando o botao eh acionado coloca o total da venda como total + desconto
         @Override
     public void actionPerformed(ActionEvent ae) {
         if ("Finalizar venda".equals(ae.getActionCommand())){
-            this.setVisible(false);
+            float troco = Float.parseFloat(jTextField2.getText()) - venda.getTotal() + Float.parseFloat(jTextField1.getText());
+            if (troco>=0){
+                float total = venda.getTotal();
+                venda.setTotal(total - Float.parseFloat(jTextField1.getText()));
+                vendasService.salvar(venda);
+                this.setVisible(false);
+            }else{
+                JOptionPane.showMessageDialog(null,"Confira o preenchimento dos campos.");
+            } 
+           
         }else{
             calcular();
         }
     }
-
+    // Calcula o troco
     private void calcular() {
         
         try{
