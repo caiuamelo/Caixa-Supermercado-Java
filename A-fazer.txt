@@ -7,11 +7,13 @@
 
 - Terminar de implementar o frame ListarProdutos (DONE)
 
-- implementar tela troco
+- implementar tela troco (DONE)
 
-- implementar botão cancelar
+- implementar botão cancelar (DONE)
 
-- implemantar atalhos F3 e F12
+- implemantar atalhos F3 e F12 (DONE)
 
-- Mudar array [] de produtos esperados na classe operacoes por List
+- Mudar array [] de produtos esperados na classe operacoes por List (DONE)
+
+- Testar tela cadastro ...erros
 
