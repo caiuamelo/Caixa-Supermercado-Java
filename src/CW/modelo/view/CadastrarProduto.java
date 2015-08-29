@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import CW.modelo.entidade.Produtos;
 import CW.modelo.service.ProdutosService;
 import java.lang.invoke.MethodHandles;
+import com.mysql.jdbc.exceptions.*;
+
 /**
  *
  * @author xca
@@ -250,15 +252,13 @@ public class CadastrarProduto extends javax.swing.JFrame implements ActionListen
                 jButton3.setEnabled(false);
                 jButton4.setEnabled(false);
 
-                try{
+                if (produtoService.encontrarProdutoPorCodigo(Long.parseLong(jTextField1.getText())).getPreco()==-1){
                     salvar();
-                    jLabel5.setText("Item salvo com sucesso");
-                }catch(Exception ex){
-                    jLabel5.setText("Erro: verifique os campos preenchidos!");                    
-                    //Tratar erro
-                    break;
+                    jLabel5.setText("Item salvo com sucesso");   
+                }else{
+                    jLabel5.setText("Erro: código já existe");
                 }
-                salvar();
+                               
                 limpaTexto();
                 novo = 0;
                 alterar = 0;
@@ -308,7 +308,7 @@ public class CadastrarProduto extends javax.swing.JFrame implements ActionListen
          if(novo == 1)    {
              
              produto.setCodigo(Long.parseLong(jTextField1.getText()));            
-             produto.setNome(jTextField2.getText());
+             produto.setNome(jTextField2.getText().toUpperCase());
              produto.setPreco(Double.parseDouble(jTextField3.getText()));
              produto.setQuantidade(Integer.parseInt(jTextField4.getText()));
              produtoService.salvar(produto);
