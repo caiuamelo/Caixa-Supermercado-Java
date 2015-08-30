@@ -58,6 +58,11 @@ public class Caixa extends javax.swing.JFrame implements ActionListener{
                         
                         jTextField3.requestFocus();
                         produto  = produtoService.encontrarProdutoPorCodigo(Long.parseLong(jTextField1.getText()));        
+                        if (produto.getPreco()==-1){
+                            JOptionPane.showMessageDialog(null, "Produto não encontrado!");
+                            jTextField1.setText("");
+                            break;
+                        }
                         jTextField2.setText(produto.getNome());
                         jTextField3.setText("1");
                         break;
@@ -424,6 +429,10 @@ public class Caixa extends javax.swing.JFrame implements ActionListener{
         
         try{      
             produto  = produtoService.encontrarProdutoPorCodigo(Long.parseLong(jTextField1.getText()));        
+            if (produto.getPreco()==-1){
+                JOptionPane.showMessageDialog(null,"Produto não encontrado");
+                return;
+            }
             jTextField2.setText(produto.getNome());
         
             if(produto.getPreco()!=-1){        

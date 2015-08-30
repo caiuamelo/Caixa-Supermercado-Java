@@ -22,7 +22,10 @@ public class CadastrarProduto extends javax.swing.JFrame implements ActionListen
      */
     public CadastrarProduto() {
         initComponents();
-     
+        jTextField2.setEditable(false);
+        jTextField3.setEditable(false);
+        jTextField4.setEditable(false);
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
@@ -235,6 +238,9 @@ public class CadastrarProduto extends javax.swing.JFrame implements ActionListen
 
         switch (e.getActionCommand()) {
             case "Novo":
+                jTextField2.setEditable(true);
+                jTextField3.setEditable(true);
+                jTextField4.setEditable(true);
                 jButton1.setEnabled(false);
                 jButton2.setEnabled(false);
                 jButton3.setEnabled(true);
@@ -242,7 +248,10 @@ public class CadastrarProduto extends javax.swing.JFrame implements ActionListen
                 novo = 1;
                 break;
             case "Alterar":
-
+                jTextField2.setEditable(true);
+                jTextField3.setEditable(true);
+                jTextField4.setEditable(true);
+ 
                 alterar();
                 
                 break;
@@ -252,7 +261,7 @@ public class CadastrarProduto extends javax.swing.JFrame implements ActionListen
                 jButton3.setEnabled(false);
                 jButton4.setEnabled(false);
 
-                if (produtoService.encontrarProdutoPorCodigo(Long.parseLong(jTextField1.getText())).getPreco()==1){
+                if (produtoService.encontrarProdutoPorCodigo(Long.parseLong(jTextField1.getText())).getPreco()==-1){
                     salvar();
                     jLabel5.setText("Item salvo com sucesso");   
                 }else{
@@ -262,6 +271,10 @@ public class CadastrarProduto extends javax.swing.JFrame implements ActionListen
                 limpaTexto();
                 novo = 0;
                 alterar = 0;
+                jTextField2.setEditable(false);
+                jTextField3.setEditable(false);
+                jTextField4.setEditable(false);
+
                 break;
             case "Cancelar":
                 jButton1.setEnabled(true);
@@ -271,6 +284,10 @@ public class CadastrarProduto extends javax.swing.JFrame implements ActionListen
                 limpaTexto();
                 novo = 0;
                 alterar = 0;
+                jTextField2.setEditable(false);
+                jTextField3.setEditable(false);
+                jTextField4.setEditable(false);
+
                 break;
             default:
                 System.out.println(e.getActionCommand());
@@ -296,10 +313,24 @@ public class CadastrarProduto extends javax.swing.JFrame implements ActionListen
         jButton4.setEnabled(true);
         //System.out.print(Long.parseLong(jTextField1.getText()));
         produto  = produtoService.encontrarProdutoPorCodigo(Long.parseLong(jTextField1.getText()));
-        jTextField2.setText(produto.getNome());
-        jTextField3.setText(String.format("%.2f",produto.getPreco()));
-        jTextField4.setText(String.format("%d",produto.getQuantidade()));
-        alterar = 1;
+        if (produto.getPreco()!=-1){
+            jTextField2.setText(produto.getNome());
+            jTextField3.setText(String.format("%.2f",produto.getPreco()));
+            jTextField4.setText(String.format("%d",produto.getQuantidade()));
+            alterar = 1;
+        }else{
+            jTextField2.setEditable(false);
+            jTextField3.setEditable(false);
+            jTextField4.setEditable(false);
+            jTextField1.setText("");
+            jButton1.setEnabled(true);
+            jButton2.setEnabled(true);
+            jButton3.setEnabled(false);
+            jButton4.setEnabled(false);
+            
+            novo = 0;
+        }
+        
         
     }
     

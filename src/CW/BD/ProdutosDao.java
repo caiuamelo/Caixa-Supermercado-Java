@@ -135,7 +135,7 @@ public class ProdutosDao {
                             
                         }else {
                                           
-                            JOptionPane.showMessageDialog(null,"Produto não encontrado");
+                            //JOptionPane.showMessageDialog(null,"Produto não encontrado");
                             
                         }
 		} catch (SQLException e) {
