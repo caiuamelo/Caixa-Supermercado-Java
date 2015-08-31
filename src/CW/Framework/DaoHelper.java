@@ -16,7 +16,7 @@ public class DaoHelper {
 	public void getConnect(){
 				
 		try {
-			connection = DriverManager.getConnection(DATABASE_URL, "root", "37121620");
+			connection = DriverManager.getConnection(DATABASE_URL, "root", "12345678");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
                     JOptionPane.showMessageDialog(null,"Sem conexão com o banco de dados.");    
