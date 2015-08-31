@@ -395,7 +395,15 @@ public class Caixa extends javax.swing.JFrame implements ActionListener{
     private int linha = 0;
     private float total = 0;
     private final Object[] colunas = {"Nome","Preço","Quantidade","Total"};
-    DefaultTableModel tableModel = new DefaultTableModel(colunas,0);
+    DefaultTableModel tableModel = new DefaultTableModel(colunas,0){
+        
+        @Override
+        public boolean isCellEditable(int row, int column) {
+        //all cells false
+            return false;
+        }
+        
+    };
     //Minhas variáveis
     
     

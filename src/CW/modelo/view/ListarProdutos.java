@@ -133,7 +133,13 @@ public final class ListarProdutos extends javax.swing.JFrame implements ActionLi
 
     // variaveis
     private final Object[] colunas = {"Código","Nome","Preço","Quantidade"};
-    DefaultTableModel tableModel = new DefaultTableModel(colunas,0);
+    DefaultTableModel tableModel = new DefaultTableModel(colunas,0){
+        @Override
+        public boolean isCellEditable(int row, int column) {
+        //all cells false
+            return false;
+        }
+    };
     ProdutosService produtosService = new ProdutosService();
     public final List<Produtos> produtosIn = produtosService.listarProdutos();;
     

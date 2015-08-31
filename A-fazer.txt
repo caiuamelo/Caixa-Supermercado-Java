@@ -15,5 +15,12 @@
 
 - Mudar array [] de produtos esperados na classe operacoes por List (DONE)
 
-- Testar tela cadastro ...erros
+- Testar tela cadastro ...erros (DONE)
+
+- Adicionar na tela troco opções de dinheiro e cartão
+
+- Implementar tela de fechamento de caixa com (dinheiro, cartão e desconto)
+
+- Na tela cadastro colocar preço de custo
+
 
